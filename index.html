@@ -1,39 +1,57 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Online Rizky Barokah - Pusat Al-Qur'an & Buku Islami</title>
+    <title>Jason Martin - Toko Online Rizky Barokah</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- ANIMASI SCROLL BERULANG (FADE-IN & SLIDE-UP) --- */
+        .about-section, .products-grid, .hero-content, .section-title {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .about-section.visible, .products-grid.visible, .hero-content.visible, .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <header class="navbar">
         <div class="navbar-brand">
             <img src="bg.jpeg" alt="Logo Rizky Barokah" class="logo-img">
             <span class="brand-title">Rizky Barokah</span>
         </div>
         <nav class="nav-menu">
-            <a href="#beranda">Beranda</a>
-            <a href="#tentang">Tentang Kami</a>
+            <a href="#beranda">Home</a>
+            <a href="#tentang">About</a>
             <a href="#produk">Katalog</a>
-            <a href="#kontak">Kontak</a>
         </nav>
+        <a href="tel:+6285877435417" class="phone-contact"></a>
     </header>
 
-    <!-- HEADER / HERO -->
     <header id="beranda" class="header">
-        <div class="header-overlay">
-            <h1>Selamat Datang di Rizky Barokah</h1>
+        <div class="hero-content">
+            <h1>Rizky Barokah</h1>
             <p>Pusat Penjualan Al-Qur'an & Buku Islami Terpercaya, Lengkap, dan Berkualitas Tinggi</p>
+            <div class="hero-buttons">
+                <a href="#tentang" class="hero-btn primary">Tentang Kami</a>
+                <a href="#produk" class="hero-btn">Katalog</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://wa.me/6285877435417?text=Halo%20Rizky%20Barokah,%20saya%20ingin%20bertanya%20tentang%20produk%20Al-Qur'an." target="_blank" title="WhatsApp">WA</a>
+                <a href="#" title="Shopee">Sho</a>
+                <a href="#" title="TikTok">Tik</a>
+                <a href="#" title="Instagram">IG</a>
+            </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="container">
 
-        <!-- TENTANG KAMI -->
         <section id="tentang" class="about-section">
             <h2 class="about-title">Tentang Kami & Visi Misi</h2>
             <p class="about-desc">
@@ -62,53 +80,45 @@
             </div>
         </section>
 
-        <!-- KATALOG PRODUK -->
         <section id="produk">
-            <h2 class="section-title">Katalog Produk Pilihan </h2>
+            <h2 class="section-title">Katalog Produk Pilihan</h2>
             <div class="products-grid">
 
-                <!-- Produk 1 -->
                 <div class="product-card">
                     <img src="WhatsApp Image 2026-09-22 at 20.29.53.jpeg" alt="Al-Qur'an I'rab Nahwu Shorof">
                     <h3>Al-Qur'an I'rab Nahwu Shorof</h3>
                     <div class="product-footer">
-                        <button class="btn-detail" onclick="openModal('modal1')">Detail Produk</button>
+                        <button class="btn-detail" onclick="openModal('modal1')">detail</button>
                     </div>
                 </div>
 
-                <!-- Produk 2 -->
                 <div class="product-card">
                     <img src="Gemini_Generated_Image_y505wiy505wiy505.jpg" alt="AL QUR'AN AL-QUDDUS TAJWID">
                     <h3>AL QUR'AN AL-QUDDUS TAJWID</h3>
                     <div class="product-footer">
-                        <button class="btn-detail" onclick="openModal('modal2')">Detail Produk</button>
+                        <button class="btn-detail" onclick="openModal('modal2')">detail</button>
                     </div>
                 </div>
 
-                <!-- Produk 3 -->
                 <div class="product-card">
                     <img src="WhatsApp Image 2026-09-23 at 22.06.43.jpeg" alt="Al-Qur'an Nahwu & Terjemah Al Fuadi">
                     <h3>Al-Qur'an Nahwu & Terjemah Al Fuadi</h3>
                     <div class="product-footer">
-                        <button class="btn-detail" onclick="openModal('modal3')">Detail Produk</button>
+                        <button class="btn-detail" onclick="openModal('modal3')">detail</button>
                     </div>
                 </div>
 
-                <!-- Produk 4 -->
                 <div class="product-card">
-                    <img src="3D Cover Ar-Rahman A5 NEW_FRONT_Biru.png" alt="Al-Qur'an Terjemahan Per Kata A5">
+                    <img src="3D Cover Ar-Rahman A5 NEW_FRONT_Biru.png" alt="Al-Qur'an Ar rahman">
                     <h3>Al-Qur'an Ar rahman</h3>
                     <div class="product-footer">
-                        <button class="btn-detail" onclick="openModal('modal4')">Detail Produk</button>
+                        <button class="btn-detail" onclick="openModal('modal4')">detail</button>
                     </div>
                 </div>
-
-                
 
             </div>
         </section>
 
-        <!-- MODAL 1 -->
         <div id="modal1" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
@@ -138,12 +148,12 @@
                             <label><strong>Pilih Ukuran:</strong></label>
                             <div class="variant-options">
                                 <button type="button" class="variant-btn active" data-price="93000" onclick="selectVariant(this)">A5</button>
-                                <button type="button" class="variant-btn" data-price="153000" onclick="selectVariant(this)">A4 </button>
+                                <button type="button" class="variant-btn" data-price="153000" onclick="selectVariant(this)">A4</button>
                             </div>
 
                             <div style="margin-top: 15px;">
                                 <label for="customName1"><strong>Custom Nama di Cover (Opsional):</strong></label>
-                                <input type="text" id="customName1" placeholder="Contoh: Ahmad" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;" />
+                                <input type="text" id="customName1" placeholder="Contoh: Ahmad" class="custom-input" />
                             </div>
                         </div>
 
@@ -163,7 +173,6 @@
             </div>
         </div>
 
-        <!-- MODAL 2 -->
         <div id="modal2" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
@@ -172,7 +181,6 @@
                         <div class="main-image-container">
                             <img id="mainImg2" src="Gemini_Generated_Image_y505wiy505wiy505.jpg" alt="Foto">
                         </div>
-                        
                          <div class="thumbnail-container">
                             <img src="WhatsApp Image 2026-09-22 at 20.31.01.jpeg" onclick="changeImage(this, 'mainImg2')" alt="Thumb">
                             <img src="WhatsApp Image 2026-09-22 at 20.30.55 (1).jpeg" onclick="changeImage(this, 'mainImg2')" alt="Thumb">
@@ -199,7 +207,7 @@
 
                             <div style="margin-top: 15px;">
                                 <label for="customName2"><strong>Custom Nama di Cover (Opsional):</strong></label>
-                                <input type="text" id="customName2" placeholder="Contoh: Ahmad" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;" />
+                                <input type="text" id="customName2" placeholder="Contoh: Ahmad" class="custom-input" />
                             </div>
                         </div>
 
@@ -219,7 +227,6 @@
             </div>
         </div>
 
-        <!-- MODAL 3 -->
         <div id="modal3" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
@@ -239,7 +246,7 @@
 
                             <div style="margin-top: 15px;">
                                 <label for="customName3"><strong>Custom Nama di Cover (Opsional):</strong></label>
-                                <input type="text" id="customName3" placeholder="Contoh: Ahmad" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;" />
+                                <input type="text" id="customName3" placeholder="Contoh: Ahmad" class="custom-input" />
                             </div>
                         </div>
 
@@ -259,8 +266,6 @@
             </div>
         </div>
 
-        <!-- MODAL 4 -->
-        
         <div id="modal4" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="closeModal('modal4')">&times;</span>
@@ -294,8 +299,8 @@
                             </div>
 
                             <div style="margin-top: 15px;">
-                                <label for="customName2"><strong>Custom Nama di Cover (Opsional):</strong></label>
-                                <input type="text" id="customName2" placeholder="Contoh: Ahmad" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;" />
+                                <label for="customName4"><strong>Custom Nama di Cover (Opsional):</strong></label>
+                                <input type="text" id="customName4" placeholder="Contoh: Ahmad" class="custom-input" />
                             </div>
                         </div>
 
@@ -308,18 +313,15 @@
                         
                         <div style="margin-top: 15px;">
                             <div class="modal-price">Rp 78.000</div>
-                            <a href="javascript:void(0)" class="btn-buy" onclick="checkoutWhatsAppWithCustomName('AL QURAN AL-QUDDUS TAJWID', 'modal4')">Beli via WhatsApp</a>
+                            <a href="javascript:void(0)" class="btn-buy" onclick="checkoutWhatsAppWithCustomName('AL QURAN Ar-Rahman', 'modal4')">Beli via WhatsApp</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-       
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer" id="kontak">
         <h4>Toko Online Rizky Barokah</h4>
         <p>Jl. Kemayoran Barat 1 No.27A, Jakarta Pusat</p>
@@ -327,8 +329,28 @@
         <p style="margin-top: 15px; font-size: 12px; opacity: 0.7;">&copy; 2026 Rizky Barokah. All Rights Reserved.</p>
     </footer>
 
-    <!-- JAVASCRIPT -->
     <script>
+        // Animasi Scroll Berulang (Fade In & Slide Up setiap kali elemen masuk/keluar layar)
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        // Menghapus class 'visible' agar animasi terulang saat di-scroll kembali
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const elementsToAnimate = document.querySelectorAll('.about-section, .products-grid, .hero-content, .section-title');
+            elementsToAnimate.forEach(el => observer.observe(el));
+        });
+
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) modal.style.display = 'flex';
@@ -384,12 +406,12 @@
             const phoneNumber = "6285877435417"; 
             
             let message = `Halo, saya ingin memesan produk:\n\n` +
-                          `*${productName}*\n` +
-                          `- Warna: ${selectedColor}\n` +
-                          `- Ukuran: ${selectedSize}\n` +
-                          `- Custom Nama: ${customName ? customName : '(Tidak ada)'}\n` +
-                          `- Harga: Rp ${parseInt(selectedPrice).toLocaleString('id-ID')}`;
-                          
+                        `*${productName}*\n` +
+                        `- Warna: ${selectedColor}\n` +
+                        `- Ukuran: ${selectedSize}\n` +
+                        `- Custom Nama: ${customName ? customName : '(Tidak ada)'}\n` +
+                        `- Harga: Rp ${parseInt(selectedPrice).toLocaleString('id-ID')}`;
+                        
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
         }
