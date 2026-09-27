@@ -242,3 +242,49 @@ window.onclick = function(event) {
             closeModal(event.target.id);
         }
     }
+
+    
+  // Fungsi untuk mendeteksi elemen saat digulir (scroll)
+  document.addEventListener("DOMContentLoaded", function() {
+    const elements = document.querySelectorAll('.scroll-animate');
+
+    function checkScroll() {
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        // Jika elemen sudah masuk ke dalam viewport layar
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('active');
+        }
+      });
+    }
+
+    // Jalankan saat discroll dan saat halaman pertama kali dimuat
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();
+  });
+
+  // --- TAMBAHAN SCRIPT SCROLL BERULANG ---
+document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+        threshold: 0.15 // Elemen akan terdeteksi saat 15% bagiannya masuk ke layar
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Munculkan animasi saat elemen masuk layar
+                entry.target.classList.add('visible');
+            } else {
+                // Hapus kelas saat elemen keluar layar agar animasi bisa berulang
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Daftarkan elemen-elemen yang ingin diberi animasi scroll berulang
+    const elementsToAnimate = document.querySelectorAll('.about-section, .products-grid, .hero-content, .section-title');
+    elementsToAnimate.forEach(el => observer.observe(el));
+});
+
