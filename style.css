@@ -1,7 +1,7 @@
 :root {
-    --bg-color: #0b1f14;      /* Hijau tua elegan utama */
-    --card-bg: #112d1d;        /* Hijau tua sedikit lebih terang untuk card */
-    --text-color: #f1f1f1;
+    --bg-color: #ffffff;         /* Background utama putih */
+    --card-bg: #ffffff;          /* Card/Katalog produk menjadi putih */
+    --text-color: #0b1f14;       /* Teks utama hijau tua pekat */
     --accent-color: #2e8b57;
     --secondary-color: #3cb371;
 }
@@ -16,23 +16,29 @@ body {
 }
 
 /* NAVBAR */
+/* NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.95);
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
     gap: 15px;
+    background: transparent; /* Menghilangkan latar belakang kotak */
+    padding: 0;             /* Menghilangkan padding */
+    border-radius: 0;       /* Menghilangkan sudut melengkung */
+    border: none;           /* Menghilangkan garis pinggir (border) */
 }
 
 .logo-img {
@@ -46,29 +52,58 @@ body {
     font-weight: bold;
     font-size: 18px;
     letter-spacing: 1px;
+    color: #0b1f14;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.brand-title {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #0b1f14;
 }
 
 .nav-menu {
     display: flex;
-    gap: 30px;
+    gap: 15px;
+    background: #ffffff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
 }
 
 .nav-menu a {
-    color: #cbd5e0;
+    color: #000000; /* Tulisan menu hitam */
     text-decoration: none;
     font-size: 14px;
-    transition: color 0.3s;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: all 0.3s;
 }
 
 .nav-menu a:hover {
-    color: #fff;
+    background: #0b1f14;
+    color: #ffffff;
 }
 
 .phone-contact {
-    color: #fff;
+    color: #0b1f14;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
+    background: #ffffff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
 }
 
 /* HERO / HEADER SECTION */
@@ -77,15 +112,9 @@ body {
     display: flex;
     align-items: center;
     padding: 0 80px;
-    /* 
-      PERUBAHAN DISINI: 
-      - 'center center' membuat background di tengah.
-      - 'contain' atau ukuran spesifik (misal: '80% auto') membuat gambarnya mengecil/tidak memenuhi seluruh layar penuh secara mentah. 
-      Di sini digunakan ukuran persentase/contain dengan latar belakang warna gelap penyeimbang.
-    */
-    background: linear-gradient(rgba(11, 31, 20, 0.75), rgba(11, 31, 20, 0.9)), 
-                url('WhatsApp Image 2026-09-21 at 21.07.08.jpeg') no-repeat center center;
-    background-size: 100% auto; /* Mengatur gambar agar mengecil dan tetap di tengah */
+    background: linear-gradient(rgba(11, 31, 20, 0.85), rgba(11, 31, 20, 0.95)), 
+                 url('WhatsApp Image 2026-09-21 at 21.07.08.jpeg') no-repeat center center;
+    background-size: cover;
 }
 
 .nomor-hp{
@@ -94,7 +123,8 @@ body {
 }
 
 .hero-content {
-    text-align: left; /* Memastikan isi teks berada di samping kiri */
+    text-align: left;
+    color: #ffffff;
 }
 
 .hero-content h1 {
@@ -103,11 +133,12 @@ body {
     font-weight: 800;
     letter-spacing: -1px;
     text-transform: uppercase;
+    color: #ffffff;
 }
 
 .hero-content p {
     font-size: 20px;
-    color: #a0aec0;
+    color: #cbd5e0;
     margin-bottom: 30px;
     max-width: 600px;
 }
@@ -171,20 +202,21 @@ body {
 /* ABOUT SECTION */
 .about-section {
     padding: 60px 0;
-    border-bottom: 1px solid #183d28;
-    text-align: left; /* Memastikan teks about di samping kiri */
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
 }
 
 .about-title {
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #0b1f14;
 }
 
 .about-desc {
     font-size: 16px;
     line-height: 1.8;
-    color: #cbd5e0;
+    color: #4a5568;
     margin-bottom: 40px;
 }
 
@@ -195,21 +227,23 @@ body {
 }
 
 .vm-card {
-    background: var(--card-bg);
+    background: #ffffff; /* Kartu putih bersih */
     padding: 30px;
     border-radius: 12px;
-    border: 1px solid #1f4e34;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    color: #0b1f14;
 }
 
 .vm-card h3 {
     margin-top: 0;
-    color: #fff;
+    color: #0b1f14;
     font-size: 20px;
 }
 
 .vm-card ul {
     padding-left: 20px;
-    color: #cbd5e0;
+    color: #4a5568;
     margin: 0;
 }
 
@@ -223,6 +257,7 @@ body {
     font-size: 36px;
     font-weight: bold;
     margin: 60px 0 30px 0;
+    color: #0b1f14;
 }
 
 .products-grid {
@@ -232,17 +267,19 @@ body {
 }
 
 .product-card {
-    background: var(--card-bg);
+    background: #ffffff; /* Card produk putih bersih */
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid #1f4e34;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .product-card img {
@@ -254,7 +291,7 @@ body {
 .product-card h3 {
     font-size: 16px;
     margin: 20px;
-    color: #fff;
+    color: #0b1f14; /* Teks judul produk hitam/hijau tua */
     flex-grow: 1;
 }
 
@@ -265,9 +302,9 @@ body {
 .btn-detail {
     width: 100%;
     padding: 10px;
-    background: transparent;
-    border: 1px solid #fff;
-    color: #fff;
+    background: #ffffff;
+    border: 1px solid #0b1f14;
+    color: #0b1f14;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
@@ -275,17 +312,17 @@ body {
 }
 
 .btn-detail:hover {
-    background: #fff;
-    color: #0b1f14;
+    background: #0b1f14;
+    color: #ffffff;
 }
 
-/* MODAL STYLING */
+/* MODAL STYLING (DETAIL PRODUK) */
 .modal {
     display: none;
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(5, 15, 10, 0.85);
+    background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
     z-index: 2000;
@@ -293,15 +330,17 @@ body {
 }
 
 .modal-content {
-    background: #112d1d;
+    background: #ffffff; /* Background detail modal putih */
     width: 90%;
     max-width: 900px;
     border-radius: 12px;
     padding: 30px;
     position: relative;
-    border: 1px solid #1f4e34;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     max-height: 90vh;
     overflow-y: auto;
+    color: #0b1f14;
 }
 
 .close-btn {
@@ -309,25 +348,15 @@ body {
     top: 20px; right: 20px;
     font-size: 28px;
     cursor: pointer;
-    color: #aaa;
+    color: #4a5568;
 }
 
-.close-btn:hover { color: #fff; }
+.close-btn:hover { color: #0b1f14; }
 
 .modal-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-}
-
-@media(max-width: 768px) {
-    .modal-body { grid-template-columns: 1fr; }
-    .header { 
-        padding: 0 20px; 
-        background-size: 100% auto; /* Menyesuaikan ukuran di mobile */
-    }
-    .hero-content h1 { font-size: 40px; }
-    .navbar { padding: 15px 20px; }
 }
 
 .product-gallery .main-image-container img {
@@ -350,7 +379,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     opacity: 0.6;
-    border: 1px solid #1f4e34;
+    border: 1px solid #e2e8f0;
 }
 
 .thumbnail-container img:hover { opacity: 1; }
@@ -358,13 +387,13 @@ body {
 .modal-info h2 {
     margin-top: 0;
     font-size: 24px;
-    color: #fff;
+    color: #0b1f14;
 }
 
 .variant-section label {
     display: block;
     margin: 15px 0 5px 0;
-    color: #cbd5e0;
+    color: #4a5568;
     font-size: 14px;
 }
 
@@ -376,18 +405,18 @@ body {
 
 .color-btn, .variant-btn {
     padding: 8px 16px;
-    background: #183d28;
-    border: 1px solid #235c3c;
-    color: #fff;
+    background: #f7fafc;
+    border: 1px solid #cbd5e0;
+    color: #0b1f14;
     border-radius: 4px;
     cursor: pointer;
     font-size: 13px;
 }
 
 .color-btn.active, .variant-btn.active {
-    background: #fff;
-    color: #0b1f14;
-    border-color: #fff;
+    background: #0b1f14;
+    color: #ffffff;
+    border-color: #0b1f14;
     font-weight: bold;
 }
 
@@ -395,34 +424,34 @@ body {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #1f4e34;
-    background: #0b1f14;
-    color: #fff;
+    border: 1px solid #cbd5e0;
+    background: #ffffff;
+    color: #0b1f14;
     border-radius: 5px;
     font-size: 14px;
     box-sizing: border-box;
 }
 
 .spec-card {
-    background: #0b1f14;
+    background: #f8fafc;
     padding: 15px;
     border-radius: 6px;
     margin-top: 20px;
-    border: 1px solid #183d28;
+    border: 1px solid #e2e8f0;
     font-size: 13px;
-    color: #cbd5e0;
+    color: #4a5568;
 }
 
 .spec-card h4 {
     margin: 0 0 10px 0;
-    color: #fff;
+    color: #0b1f14;
     font-size: 14px;
 }
 
 .modal-price {
     font-size: 22px;
     font-weight: bold;
-    color: #fff;
+    color: #0b1f14;
     margin-bottom: 10px;
 }
 
@@ -442,156 +471,214 @@ body {
 
 /* FOOTER */
 .footer {
-    background: #07140d;
+    background: #012803f1; /* Footer putih bersih */
     padding: 40px 20px;
     text-align: center;
-    border-top: 1px solid #183d28;
-    color: #a0aec0;
+    border-top: 1px solid #e2e8f0;
+    color: #f6f6f7;
 }
 
-.footer h4 { color: #fff; margin-bottom: 10px; }
+.footer h4 { color: #f3f4f3; margin-bottom: 10px; }
 
-/* --- TAMBAHAN ANIMASI SCROLL --- */
-
-/* 1. Membuat perpindahan antar menu/link menjadi smooth (halus) */
+/* --- ANIMASI SCROLL --- */
 html {
     scroll-behavior: smooth;
 }
 
-/* 2. Style awal untuk elemen yang akan diberi animasi saat di-scroll */
-.scroll-animate {
+.scroll-animate, .about-section, .products-grid, .hero-content, .section-title {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* 3. Class aktif yang akan dipasang oleh JavaScript saat elemen terlihat di layar */
-.scroll-animate.active {
+.scroll-animate.active, .about-section.visible, .products-grid.visible, .hero-content.visible, .section-title.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* --- TAMBAHAN ANIMASI SCROLL BERULANG --- */
-.about-section, .products-grid, .hero-content, .section-title {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.about-section.visible, .products-grid.visible, .hero-content.visible, .section-title.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-
-    /* --- CSS TAMBAHAN AGAR TAMPILAN DI HP LEBIH RAPI --- */
-    @media screen and (max-width: 768px) {
-        /* Mengatur agar modal pas di layar HP dan bisa di-scroll dengan nyaman */
-        .modal-content {
-            width: 95% !important;
-            max-height: 90vh !important;
-            margin: auto !important;
-            overflow-y: auto !important;
-            padding: 15px !important;
-        }
-
-        /* Mengatur tata letak bagian dalam modal menjadi satu kolom ke bawah */
-        .modal-body {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 15px !important;
-        }
-
-        /* Memperkecil dan merapikan thumbnail gambar */
-        .thumbnail-container {
-            display: flex !important;
-            justify-content: center !important;
-            gap: 8px !important;
-            overflow-x: auto !important;
-            padding-bottom: 5px !important;
-        }
-
-        .thumbnail-container img {
-            width: 50px !important;
-            height: 50px !important;
-            object-fit: cover !important;
-            border-radius: 6px !important;
-        }
-
-        /* Mempercantik tombol Beli via WhatsApp agar tidak terpotong */
-        .btn-buy {
-            display: block !important;
-            width: 100% !important;
-            text-align: center !important;
-            padding: 12px !important;
-            font-size: 16px !important;
-            box-sizing: border-box !important;
-            margin-bottom: 10px !important;
-        }
-
-        /* Menyesuaikan ukuran tombol pilihan warna dan ukuran agar mudah ditekan jari */
-        .color-btn, .variant-btn {
-            padding: 8px 12px !important;
-            font-size: 14px !important;
-        }
+/* --- PENYESUAIAN RESPONSIF DI HP (MOBILE) --- */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 12px 15px;
+        flex-direction: column;
+        gap: 10px;
     }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        padding: 8px 10px;
+    }
+
+    .nav-menu a {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+
+    .header {
+        min-height: auto !important;
+        padding: 130px 15px 40px 15px !important;
+        background-size: cover !important;
+    }
+
+    .hero-content {
+        padding: 20px 15px !important;
+        margin-top: 0 !important;
+        background: rgba(11, 31, 20, 0.85) !important; 
+        border-radius: 12px;
+    }
+
+    .hero-content h1 {
+        font-size: 28px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .hero-content p {
+        font-size: 14px !important;
+        margin-bottom: 15px !important;
+        line-height: 1.4 !important;
+    }
+
+    .hero-buttons {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 10px !important;
+        justify-content: center !important;
+        margin-bottom: 15px !important;
+    }
+
+    .hero-btn {
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+    }
+
+    .social-icons {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin-top: 5px !important;
+    }
+
+    .social-icons a {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 12px !important;
+    }
+
+    .modal-content {
+        width: 95% !important;
+        max-height: 90vh !important;
+        margin: auto !important;
+        overflow-y: auto !important;
+        padding: 15px !important;
+    }
+
+    .modal-body {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .thumbnail-container {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        overflow-x: auto !important;
+        padding-bottom: 5px !important;
+    }
+
+    .thumbnail-container img {
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    .btn-buy {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 12px !important;
+        font-size: 16px !important;
+        box-sizing: border-box !important;
+        margin-bottom: 10px !important;
+    }
+
+    .color-btn, .variant-btn {
+        padding: 8px 12px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* --- CSS TAMBAHAN UNTUK 5 FOTO SCROLL KE SAMPING & BISA DIKLIK --- */
+    .scroll-banner-container {
+        width: 100%;
+        background-color: #f9f9f9;
+        padding: 20px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .scroll-banner-wrapper {
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding: 10px 20px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+    }
+    .scroll-banner-wrapper::-webkit-scrollbar {
+        height: 8px;
+    }
+    .scroll-banner-wrapper::-webkit-scrollbar-thumb {
+        background-color: #27ae60;
+        border-radius: 4px;
+    }
+    .scroll-banner-item {
+        flex: 0 0 auto;
+        width: 280px;
+        height: 180px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        scroll-snap-align: start;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    .scroll-banner-item:hover {
+        transform: scale(1.03);
+    }
+    .scroll-banner-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* --- STYLING TOMBOL PANAH BANNER --- */
+        .scroll-banner-container {
+            position: relative; /* Wajib agar posisi tombol panah bisa diatur absolute */
+        }
+        .banner-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+        .banner-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .banner-prev {
+            left: 10px;
+        }
+        .banner-next {
+            right: 10px;
+        }
 
     
-    /* --- PERBAIKAN TAMPILAN HP: JARAK & BACKGROUND FOTO --- */
-    @media screen and (max-width: 768px) {
-        /* 1. Merapatkan tinggi section utama di HP agar tidak terlalu kosong ke bawah */
-        .header {
-            min-height: auto !important;
-            padding: 80px 15px 40px 15px !important;
-        }
-
-        /* 2. Menggelapkan background foto dan merapikan posisi teks hero */
-        .hero-content {
-            padding: 20px 10px !important;
-            margin-top: 0 !important;
-            /* Membuat latar belakang sedikit lebih gelap agar teks kontras & mudah dibaca */
-            background: rgba(0, 30, 15, 0.75) !important; 
-            border-radius: 12px;
-        }
-
-        /* 3. Merapatkan jarak antar elemen di dalam teks utama */
-        .hero-content h1 {
-            font-size: 28px !important;
-            margin-bottom: 8px !important;
-        }
-
-        .hero-content p {
-            font-size: 14px !important;
-            margin-bottom: 15px !important;
-            line-height: 1.4 !important;
-        }
-
-        /* 4. Merapatkan tombol (Tentang Kami & Katalog) */
-        .hero-buttons {
-            display: flex !important;
-            flex-direction: row !important;
-            gap: 10px !important;
-            justify-content: center !important;
-            margin-bottom: 15px !important;
-        }
-
-        .hero-btn {
-            padding: 8px 16px !important;
-            font-size: 13px !important;
-        }
-
-        /* 5. Merapatkan ikon media sosial (WA, Sho, Tik, IG) di bawah */
-        .social-icons {
-            display: flex !important;
-            justify-content: center !important;
-            gap: 8px !important;
-            margin-top: 5px !important;
-        }
-
-        .social-icons a {
-            width: 35px !important;
-            height: 35px !important;
-            font-size: 12px !important;
-        }
-    }

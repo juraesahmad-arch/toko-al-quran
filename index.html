@@ -6,13 +6,97 @@
     <title>Jason Martin - Toko Online Rizky Barokah</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* --- STYLING TAMBAHAN UNTUK PENCARIAN & KERANJANG --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .nav-search-cart {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .search-box {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+            width: 180px;
+            transition: width 0.3s ease;
+        }
+        .search-box:focus {
+            width: 220px;
+            border-color: #27ae60;
+        }
+        .cart-btn {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .cart-btn:hover {
+            background-color: #219653;
+        }
+
+        /* --- STYLING 1 FOTO UTUH PER TAMPILAN & BISA DIGULIR KE SAMPING --- */
+        .scroll-banner-container {
+            width: 100%;
+            background-color: #f9f9f9;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .scroll-banner-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+            -ms-overflow-style: none; /* Sembunyikan scrollbar di IE/Edge */
+            width: 90%;
+            max-width: 700px;
+            margin: 0 auto;
+            gap: 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .scroll-banner-wrapper::-webkit-scrollbar {
+            display: none; /* Sembunyikan scrollbar di Chrome/Safari */
+        }
+        .scroll-banner-item {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 380px;
+            scroll-snap-align: center;
+            cursor: pointer;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scroll-banner-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Menjaga foto agar kelihatan utuh tidak terpotong */
+        }
+
         /* --- ANIMASI SCROLL BERULANG (FADE-IN & SLIDE-UP) --- */
-        .about-section, .products-grid, .hero-content, .section-title {
+        .about-section, .products-grid, .hero-content, .section-title, .scroll-banner-container {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .about-section.visible, .products-grid.visible, .hero-content.visible, .section-title.visible {
+        .about-section.visible, .products-grid.visible, .hero-content.visible, .section-title.visible, .scroll-banner-container.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -30,6 +114,15 @@
             <a href="#tentang">About</a>
             <a href="#produk">Katalog</a>
         </nav>
+        <div class="nav-search-cart">
+            <!-- Kolom Pencarian Produk -->
+            <input type="text" id="searchProduct" class="search-box" placeholder="Cari Al-Qur'an..." onkeyup="filterProducts()">
+            
+            <!-- Tombol Keranjang -->
+            <a href="javascript:void(0)" class="cart-btn" onclick="openCartModal()">
+                🛒 Keranjang <span id="cartCount" style="background: white; color: #27ae60; padding: 1px 6px; border-radius: 50%; font-size: 12px;">0</span>
+            </a>
+        </div>
         <a href="tel:+6285877435417" class="phone-contact"></a>
     </header>
 
@@ -50,7 +143,36 @@
         </div>
     </header>
 
+   <!-- SLIDER 5 FOTO DENGAN TOMBOL PANAH -->
+    <div class="scroll-banner-container">
+        <!-- Tombol Panah Kiri -->
+        <button class="banner-arrow banner-prev" onclick="scrollBanner(-1)">&#10094;</button>
+        
+        <div class="scroll-banner-wrapper" id="bannerWrapper">
+            <div class="scroll-banner-item" onclick="openModal('modal1')">
+                <img src="WhatsApp Image 2026-09-22 at 20.29.53.jpeg" alt="Foto 1">
+            </div>
+            <div class="scroll-banner-item" onclick="openModal('modal2')">
+                <img src="Gemini_Generated_Image_y505wiy505wiy505.jpg" alt="Foto 2">
+            </div>
+            <div class="scroll-banner-item" onclick="openModal('modal3')">
+                <img src="WhatsApp Image 2026-09-23 at 22.06.43.jpeg" alt="Foto 3">
+            </div>
+            <div class="scroll-banner-item" onclick="openModal('modal4')">
+                <img src="3D Cover Ar-Rahman A5 NEW_FRONT_Biru.png" alt="Foto 4">
+            </div>
+            <div class="scroll-banner-item" onclick="openModal('modal1')">
+                <img src="WhatsApp Image 2026-09-22 at 20.30.55.jpeg" alt="Foto 5">
+            </div>
+        </div>
+
+        <!-- Tombol Panah Kanan -->
+        <button class="banner-arrow banner-next" onclick="scrollBanner(1)">&#10095;</button>
+    </div>
+
     <main class="container">
+        <!-- Konten katalog atau elemen utama Anda di sini -->
+    </main>
 
         <section id="tentang" class="about-section">
             <h2 class="about-title">Tentang Kami & Visi Misi</h2>
@@ -84,7 +206,7 @@
             <h2 class="section-title">Katalog Produk Pilihan</h2>
             <div class="products-grid">
 
-                <div class="product-card">
+                <div class="product-card" data-name="Al-Qur'an I'rab Nahwu Shorof">
                     <img src="WhatsApp Image 2026-09-22 at 20.29.53.jpeg" alt="Al-Qur'an I'rab Nahwu Shorof">
                     <h3>Al-Qur'an I'rab Nahwu Shorof</h3>
                     <div class="product-footer">
@@ -92,7 +214,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-name="AL QUR'AN AL-QUDDUS TAJWID">
                     <img src="Gemini_Generated_Image_y505wiy505wiy505.jpg" alt="AL QUR'AN AL-QUDDUS TAJWID">
                     <h3>AL QUR'AN AL-QUDDUS TAJWID</h3>
                     <div class="product-footer">
@@ -100,7 +222,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-name="Al-Qur'an Nahwu & Terjemah Al Fuadi">
                     <img src="WhatsApp Image 2026-09-23 at 22.06.43.jpeg" alt="Al-Qur'an Nahwu & Terjemah Al Fuadi">
                     <h3>Al-Qur'an Nahwu & Terjemah Al Fuadi</h3>
                     <div class="product-footer">
@@ -108,7 +230,7 @@
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-name="Al-Qur'an Ar rahman">
                     <img src="3D Cover Ar-Rahman A5 NEW_FRONT_Biru.png" alt="Al-Qur'an Ar rahman">
                     <h3>Al-Qur'an Ar rahman</h3>
                     <div class="product-footer">
@@ -341,15 +463,34 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     } else {
-                        // Menghapus class 'visible' agar animasi terulang saat di-scroll kembali
                         entry.target.classList.remove('visible');
                     }
                 });
             }, observerOptions);
 
-            const elementsToAnimate = document.querySelectorAll('.about-section, .products-grid, .hero-content, .section-title');
+            const elementsToAnimate = document.querySelectorAll('.about-section, .products-grid, .hero-content, .section-title, .scroll-banner-container');
             elementsToAnimate.forEach(el => observer.observe(el));
         });
+
+        // Fitur Pencarian Produk Real-time
+        function filterProducts() {
+            let input = document.getElementById('searchProduct').value.toLowerCase();
+            let cards = document.querySelectorAll('.product-card');
+
+            cards.forEach(card => {
+                let name = card.getAttribute('data-name').toLowerCase();
+                if (name.includes(input)) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Fitur Dummy Keranjang
+        function openCartModal() {
+            alert("Keranjang belanja Anda saat ini masih kosong.");
+        }
 
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -406,12 +547,12 @@
             const phoneNumber = "6285877435417"; 
             
             let message = `Halo, saya ingin memesan produk:\n\n` +
-                        `*${productName}*\n` +
-                        `- Warna: ${selectedColor}\n` +
-                        `- Ukuran: ${selectedSize}\n` +
-                        `- Custom Nama: ${customName ? customName : '(Tidak ada)'}\n` +
-                        `- Harga: Rp ${parseInt(selectedPrice).toLocaleString('id-ID')}`;
-                        
+                    `*${productName}*\n` +
+                    `- Warna: ${selectedColor}\n` +
+                    `- Ukuran: ${selectedSize}\n` +
+                    `- Custom Nama: ${customName ? customName : '(Tidak ada)'}\n` +
+                    `- Harga: Rp ${parseInt(selectedPrice).toLocaleString('id-ID')}`;
+                    
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
         }
